@@ -30,7 +30,17 @@ public class RutasController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        cargarCiudades(request, response);
+        String ciudadOrigen = request.getParameter("origen");
+    
+        if (ciudadOrigen != null && !ciudadOrigen.isEmpty()) {
+            
+            cargarCiudadesDestino(ciudadOrigen, request, response);
+            
+        } else {
+            
+            cargarCiudades(request, response);
+            
+        }
         
     }
 
@@ -60,6 +70,26 @@ public class RutasController extends HttpServlet {
         // Escribir los datos JSON en la respuesta
         response.getWriter().write(ciudadesJson);
 
+    }
+    
+    private void cargarCiudadesDestino(String ciudadOrigen, HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    
+        RutasDAO rutas = new RutasDAO();
+
+        List<String> ciudadesDestino = rutas.listarCiudadesDestino(ciudadOrigen);
+
+        // Convertir la lista a JSON
+        String ciudadesJson = new Gson().toJson(ciudadesDestino);
+
+        // Configurar la respuesta
+        response.setContentType("application/json");
+        
+        response.setCharacterEncoding("UTF-8");
+
+        // Escribir los datos JSON en la respuesta
+        response.getWriter().write(ciudadesJson);
+        
     }
 
 

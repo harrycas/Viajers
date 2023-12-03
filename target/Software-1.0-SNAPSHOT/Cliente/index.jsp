@@ -62,12 +62,6 @@
                             <br>
                             <select id="Destino" name="Destino"style="width: 100%;" required>
                                 <option value="" disabled selected></option>
-                                <option value="destino1">Destino1</option>
-                                <option value="destino2">Destino2</option>
-                                <option value="destino3">Destino3</option>
-                                <option value="destino4">Destino4</option>
-                                <option value="destino5">Destino5</option>
-
                             </select>
                             <br><br>
                             <label>Fecha de viaje</label>
@@ -188,6 +182,13 @@
                     origenSelect.empty(); // Limpiar opciones existentes
 
                     if (data.length > 0) {
+                        origenSelect.append($('<option>', {
+                            value: "",
+                            text: "Selecciona una ciudad de origen",
+                            disabled: true,
+                            selected: true
+                        }));
+
                         $.each(data, function (index, ciudad) {
                             origenSelect.append($('<option>', {
                                 value: ciudad,
@@ -203,7 +204,39 @@
                     }
                 });
             });
-        </script>      
+        </script>
+
+        
+        <!-- Script para cargar ciudades de destino dinámicamente al cambiar la ciudad de origen -->
+        <script>
+            document.getElementById('Origen').addEventListener('change', function() {
+                var ciudadOrigen = this.value;
+
+                // Llamada AJAX para obtener las ciudades de destino
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        var ciudadesDestino = JSON.parse(this.responseText);
+                        llenarCiudadesDestino(ciudadesDestino);
+                    }
+                };
+                xhr.open('GET', 'RutasController?origen=' + ciudadOrigen, true);
+                xhr.send();
+            });
+
+            function llenarCiudadesDestino(ciudadesDestino) {
+                var selectCiudadesDestino = document.getElementById('Destino');
+                selectCiudadesDestino.innerHTML = "";  // Limpiar el contenido actual
+
+                // Agregar las nuevas opciones al select
+                ciudadesDestino.forEach(function(ciudad) {
+                    var option = document.createElement('option');
+                    option.value = ciudad;
+                    option.text = ciudad;
+                    selectCiudadesDestino.appendChild(option);
+                });
+            }
+        </script>
 
     </body>
 </html>
