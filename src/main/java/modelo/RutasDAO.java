@@ -60,4 +60,39 @@ public class RutasDAO {
         
     }
     
+    
+    public List<String> listarCiudadesDestino(String ciudadOrigen) {
+        
+        PreparedStatement ps;
+        
+        ResultSet rs;
+        
+        List<String> ciudadesDestino = new ArrayList<>();
+
+        try {
+            
+            
+            conex = con.getConexion();
+            
+            ps = conex.prepareStatement("SELECT destination FROM Ruta WHERE origin = ?");
+            
+            ps.setString(1, ciudadOrigen);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                
+                ciudadesDestino.add(rs.getString("destination"));
+                
+            }
+
+        } catch (SQLException e) {
+            
+            System.out.println(e.toString());
+            
+        }
+
+        return ciudadesDestino;
+    }
+    
 }
