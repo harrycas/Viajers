@@ -24,7 +24,7 @@ public class Conexion {
              Class.forName("com.mysql.jdbc.Driver");
             
             //Crear conexión
-            Connection connBD = DriverManager.getConnection("jdbc:mysql://localhost:3306/Viajers", "root", "");
+            Connection connBD = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_inso", "root", "");
             
             System.out.println("Conexión a la base de datos exitosa");
             

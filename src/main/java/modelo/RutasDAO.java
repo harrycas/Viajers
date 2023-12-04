@@ -38,7 +38,7 @@ public class RutasDAO {
             
             conex = con.getConexion();
             
-            ps = conex.prepareStatement("SELECT DISTINCT origin FROM Ruta");
+            ps = conex.prepareStatement("SELECT DISTINCT origin FROM ruta");
             
             rs = ps.executeQuery();
             

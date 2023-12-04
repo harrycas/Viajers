@@ -1,4 +1,8 @@
-modelo/Rutas.class
-controlador/RutasController.class
-modelo/RutasDAO.class
-config/Conexion.class
+modelo\PasajeroDAO.class
+modelo\Rutas.class
+modelo\RutasDAO.class
+controlador\PasajController.class
+config\Conexion.class
+modelo\Documento.class
+controlador\RutasController.class
+modelo\Pasajero.class

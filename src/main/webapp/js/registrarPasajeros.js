@@ -3,8 +3,7 @@ function validarFormulario() {
     var numeroDocumento = document.getElementById("numeroDocumento").value;
     var genero = document.getElementById("genero").value;
     var nombre = document.getElementById("nombre").value;
-    var apellidoPaterno = document.getElementById("apellidoPaterno").value;
-    var apellidoMaterno = document.getElementById("apellidoMaterno").value;
+    var apellido = document.getElementById("apellido").value;
     var fechaNacimiento = document.getElementById("datepicker").value;
     var email = document.getElementById("email").value;
 
@@ -13,8 +12,7 @@ function validarFormulario() {
         numeroDocumento === "" ||
         genero === "" ||
         nombre === "" ||
-        apellidoPaterno === "" ||
-        apellidoMaterno === "" ||
+        apellido === "" ||
         fechaNacimiento === "" ||
         email === ""
     ) {
