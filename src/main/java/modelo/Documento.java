@@ -14,10 +14,11 @@ public class Documento {
     
     private String type;
 
-    public Documento(String type) {
+    public Documento(int idDocumento, String type) {
+        this.idDocumento = idDocumento;
         this.type = type;
     }
-
+    
     public int getIdDocumento() {
         return idDocumento;
     }

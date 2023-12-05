@@ -4,8 +4,6 @@
  */
 package modelo;
 
-import java.sql.Date;
-
 /**
  *
  * @author harryjosecastrorodriguez
@@ -13,9 +11,9 @@ import java.sql.Date;
 public class Pasajero {
     
     String idPasajero, name, lastName, birthday, cellphone, sex, mail;
-    int docID;
+    Documento doc;
 
-    public Pasajero(String idPasajero, String name, String lastName, String birthday, String cellphone, String sex, String mail, int docID) {
+    public Pasajero(String idPasajero, String name, String lastName, String birthday, String cellphone, String sex, String mail, Documento doc) {
         this.idPasajero = idPasajero;
         this.name = name;
         this.lastName = lastName;
@@ -23,7 +21,7 @@ public class Pasajero {
         this.cellphone = cellphone;
         this.sex = sex;
         this.mail = mail;
-        this.docID = docID;
+        this.doc = doc;
     }
 
     public String getIdPasajero() {
@@ -82,12 +80,12 @@ public class Pasajero {
         this.mail = mail;
     }
 
-    public int getDocID() {
-        return docID;
+    public Documento getDoc() {
+        return doc;
     }
 
-    public void setDocID(int docID) {
-        this.docID = docID;
+    public void setDoc(Documento doc) {
+        this.doc = doc;
     }
-
+    
 }

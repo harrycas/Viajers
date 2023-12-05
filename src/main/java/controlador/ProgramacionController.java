@@ -28,7 +28,7 @@ import modelo.ProgramacionDAO;
  *
  * @author harryjosecastrorodriguez
  */
-@WebServlet(name = "ProgramacionController", urlPatterns = {"/Cliente/ProgramacionController"})
+@WebServlet(name = "ProgramacionController", urlPatterns = {"/ProgramacionController"})
 public class ProgramacionController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -67,6 +67,8 @@ public class ProgramacionController extends HttpServlet {
             fecha = LocalDate.parse(fechaStr, dtfEntrada);
             System.out.println("Fecha después del formateo: " + fecha);
             
+            RequestDispatcher dispatcher = null;
+            
             // Llamar a ProgramacionDAO para obtener las programaciones disponibles
             ProgramacionDAO programacionDAO = new ProgramacionDAO();
             List<Programacion> programaciones = programacionDAO.obtenerProgramacionesDisponibles(ciudadOrigen, ciudadDestino, Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant()));
@@ -80,7 +82,10 @@ public class ProgramacionController extends HttpServlet {
 
             // Enviar los resultados a la página JSP correspondiente
             request.setAttribute("programaciones", programaciones);
-            this.getServletConfig().getServletContext().getRequestDispatcher("/Cliente/horarios.jsp").forward(request, response);
+            //this.getServletConfig().getServletContext().getRequestDispatcher("/Software/Cliente/horarios.jsp").forward(request, response);
+            dispatcher = request.getRequestDispatcher("/Cliente/horarios.jsp");
+            dispatcher.forward(request, response);
+            
 
         } catch (DateTimeParseException ex) {
             Logger.getLogger(ProgramacionController.class.getName()).log(Level.SEVERE, null, ex);

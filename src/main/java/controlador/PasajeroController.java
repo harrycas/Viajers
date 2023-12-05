@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Documento;
 import modelo.DocumentoDAO;
 import modelo.Pasajero;
 import modelo.PasajeroDAO;
@@ -41,7 +42,9 @@ public class PasajeroController extends HttpServlet {
         
         DocumentoDAO docDAO = new DocumentoDAO();
         
-        int idDoc = docDAO.obtenerIdDocumentoDesdeTipo(typeDoc);
+        int idDoc = docDAO.obtenerIdDocumentoDesdeTipo(typeDoc);        
+                
+        Documento doc = new Documento(idDoc,typeDoc);
         
         String idPasajero = request.getParameter("doc_nro");
         String name = request.getParameter("name");
@@ -52,7 +55,7 @@ public class PasajeroController extends HttpServlet {
         String mail = request.getParameter("mail");
         
         // Crear objeto Pasajero
-        Pasajero pasajero = new Pasajero(idPasajero, name,lastName,birthday,cellphone,sex,mail,idDoc);
+        Pasajero pasajero = new Pasajero(idPasajero, name,lastName,birthday,cellphone,sex,mail,doc);
         
         // Imprimir datos en la consola para verificar
         System.out.println("Datos del Pasajero:");
@@ -63,7 +66,7 @@ public class PasajeroController extends HttpServlet {
         System.out.println("Teléfono: " + pasajero.getCellphone());
         System.out.println("Género: " + pasajero.getSex());
         System.out.println("Correo electrónico: " + pasajero.getMail());
-        System.out.println("Documento - Tipo: " + pasajero.getDocID());
+        System.out.println("Documento - Tipo: " + pasajero.getDoc().getType());
 
         
         PasajeroDAO pasajeroDAO = new PasajeroDAO();

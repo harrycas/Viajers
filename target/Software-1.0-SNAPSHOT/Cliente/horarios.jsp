@@ -12,35 +12,36 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Horarios</title>
-</head>
-<body>
+    
+    <head>
+        <title>Horarios</title>
+    </head>
 
-<h1>Resultados de Programaciones</h1>
+    <body>
 
-<%
-    List<Programacion> programaciones = (List<Programacion>)request.getAttribute("programaciones");
+        <h1>Resultados de Programaciones</h1>
 
-    if (programaciones != null && !programaciones.isEmpty()) {
-        for (Programacion programacion : programaciones) {
-%>
-            <div>
-                <p>ID Programación: <%= programacion.getId() %></p>
-                <p>Fecha: <%= programacion.getDate() %></p>
-                <p>Hora: <%= programacion.getHour() %></p>
-                <p>Ruta origen: <%= programacion.getRuta().getOrigin() %></p>
-                <p>Ruta destino: <%= programacion.getRuta().getDestination() %></p>
-                <hr/>
-            </div>
-<%
-        }
-    } else {
-%>
-        <p>No hay programaciones disponibles para la consulta seleccionada.</p>
-<%
-    }
-%>
+        <%
+            List<Programacion> programaciones = (List<Programacion>)request.getAttribute("programaciones");
 
-</body>
+            if (programaciones != null && !programaciones.isEmpty()) {
+                for (Programacion programacion : programaciones) {
+        %>
+                    <div>
+                        <p>ID Programación: <%= programacion.getId() %></p>
+                        <p>Fecha: <%= programacion.getDate() %></p>
+                        <p>Hora: <%= programacion.getHour() %></p>
+                        <hr/>
+                    </div>
+        <%
+                }
+            } else {
+        %>
+                <p>No hay programaciones disponibles para la consulta seleccionada.</p>
+        <%
+            }
+        %>
+
+    </body>
+    
 </html>

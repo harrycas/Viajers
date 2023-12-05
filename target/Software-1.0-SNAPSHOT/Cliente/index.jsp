@@ -252,7 +252,7 @@
                 // Realizar la llamada al controlador mediante Ajax
                 $.ajax({
                     type: "POST",
-                    url: "ProgramacionController",
+                    url: "/Software/ProgramacionController",
                     data: {
                         Origen: ciudadOrigen,
                         Destino: ciudadDestino,
