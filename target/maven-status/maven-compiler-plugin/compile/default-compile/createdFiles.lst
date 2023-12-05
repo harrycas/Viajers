@@ -1,4 +1,7 @@
+controlador/ProgramacionController.class
 modelo/Rutas.class
 controlador/RutasController.class
 modelo/RutasDAO.class
 config/Conexion.class
+modelo/ProgramacionDAO.class
+modelo/Programacion.class

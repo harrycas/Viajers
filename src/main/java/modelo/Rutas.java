@@ -4,21 +4,23 @@
  */
 package modelo;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author harryjosecastrorodriguez
  */
 public class Rutas {
     
-    int id;
+    private int idRuta;
     
-    String origin, destination;
+    private String origin, destination;
     
-    float price;
+    private BigDecimal price;
 
-    public Rutas(int id, String origin, String destination, float price) {
+    public Rutas(int id, String origin, String destination, BigDecimal price) {
         
-        this.id = id;
+        this.idRuta = id;
         
         this.origin = origin;
         
@@ -30,13 +32,13 @@ public class Rutas {
 
     public int getId() {
         
-        return id;
+        return idRuta;
     
     }
 
     public void setId(int id) {
         
-        this.id = id;
+        this.idRuta = id;
         
     }
 
@@ -64,13 +66,13 @@ public class Rutas {
         
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         
         return price;
         
     }
 
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         
         this.price = price;
         

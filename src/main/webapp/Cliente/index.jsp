@@ -65,7 +65,7 @@
                             </select>
                             <br><br>
                             <label>Fecha de viaje</label>
-                            <input style="width: 100%;" type="date" id="fechaInput" min="" required />
+                            <input style="width: 100%;" type="date" id="fechaInput" name="fechaInput" min="" required />
                             <br><br>
                             <div class="text-center">
                                 <button type="button" class="boton estiloboton" onclick="validarYRedirigir()">Buscar</button>
@@ -143,32 +143,29 @@
     
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                var fechaInput = document.getElementById("fechaInput");
+            var fechaInput = document.getElementById("fechaInput");
 
-                // Obtén la fecha actual en la zona horaria local del usuario
-                var fechaActual = new Date().toLocaleDateString('en-CA'); // Ajusta el código según la zona horaria necesaria
+            // Obtén la fecha actual en la zona horaria local del usuario
+            var fechaActual = new Date();
 
-                // Establece la fecha actual como el valor mínimo del input
-                fechaInput.min = fechaActual;
+            // Suma 3 días a la fecha actual
+            fechaActual.setDate(fechaActual.getDate() + 3);
+
+            // Formatea la fecha al formato "dd/mm/yyyy"
+            var formattedFecha =
+                String(fechaActual.getDate()).padStart(2, '0') + '/' +
+                String(fechaActual.getMonth() + 1).padStart(2, '0') + '/' +
+                fechaActual.getFullYear();
+
+            // Establece la fecha actual + 3 días como el valor mínimo del input
+            fechaInput.min = formattedFecha;
+
+            // Establece la fecha actual como el valor inicial del input
+            fechaInput.value = formattedFecha;
             });
-        </script>
 
-        <script>
-            function validarYRedirigir() {
-                // Obtener los valores de los campos del formulario
-                var origen = document.getElementById("Origen").value;
-                var destino = document.getElementById("Destino").value;
-                var fecha = document.getElementById("fechaInput").value;
-
-                // Realizar la validación, puedes agregar otras condiciones según tus necesidades
-                if (origen === "" || destino === "" || fecha === "") {
-                    alert("Por favor, completa todos los campos antes de buscar.");
-                } else {
-                    // Redirigir a la página index.html
-                    window.location.href = "seleccionarBus.html";
-                }
-            }
         </script>
+        
         
         <script>
             $(document).ready(function () {
@@ -179,7 +176,7 @@
 
                     // Actualizar las opciones del menú desplegable con las ciudades recibidas
                     var origenSelect = $('#Origen');
-                    origenSelect.empty(); // Limpiar opciones existentes
+                    origenSelect.empty(); // Limpiar opciones existentes    
 
                     if (data.length > 0) {
                         origenSelect.append($('<option>', {
@@ -234,6 +231,44 @@
                     option.value = ciudad;
                     option.text = ciudad;
                     selectCiudadesDestino.appendChild(option);
+                });
+            }
+        </script>
+        
+
+        <script>
+            function validarYRedirigir() {
+                // Obtener los valores del formulario
+                var ciudadOrigen = $('#Origen').val();
+                var ciudadDestino = $('#Destino').val();
+                var fecha = $('#fechaInput').val();
+
+                // Validar que los campos no estén vacíos
+                if (ciudadOrigen === "" || ciudadDestino === "" || fecha === "") {
+                    alert("Por favor, completa todos los campos.");
+                    return;
+                }
+
+                // Realizar la llamada al controlador mediante Ajax
+                $.ajax({
+                    type: "POST",
+                    url: "ProgramacionController",
+                    data: {
+                        Origen: ciudadOrigen,
+                        Destino: ciudadDestino,
+                        fechaInput: fecha
+                    },
+                    success: function(response) {
+                        // La respuesta del controlador, si necesitas hacer algo con ella
+                        console.log(response);
+
+                        // Redirigir a la página correspondiente
+                        window.location.href = "/Software/Cliente/horarios.jsp";
+                    },
+                    error: function(error) {
+                        console.error(error);
+                        alert("Hubo un error al procesar la solicitud.");
+                    }
                 });
             }
         </script>
