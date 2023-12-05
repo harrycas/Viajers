@@ -1,5 +1,5 @@
 body {
-    background-image: url('../Img/MP.png'); /* Cambia la ruta por la de tu imagen */
+    background-image: url('../img/MP.png'); /* Cambia la ruta por la de tu imagen */
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

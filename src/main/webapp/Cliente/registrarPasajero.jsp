@@ -54,7 +54,7 @@
                             Asiento: 12</div>
                     </div>
 
-                    <form action="/Cliente/PasajController" method="POST" id="formularioRegistro">
+                    <form action="PasajController" method="POST" id="formularioRegistro">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
