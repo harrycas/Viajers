@@ -76,8 +76,6 @@ public class ProgramacionController extends HttpServlet {
                 System.out.println("ID Programación: " + programacion.getId());
                 System.out.println("Fecha: " + programacion.getDate());
                 System.out.println("Hora: " + programacion.getHour());
-                System.out.println("Ruta origen: " + programacion.getRuta().getOrigin());
-                System.out.println("Ruta destino: " + programacion.getRuta().getDestination());
             }
 
             // Enviar los resultados a la página JSP correspondiente

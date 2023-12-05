@@ -18,13 +18,13 @@ public class Programacion {
     
     private String hour;
     
-    private Rutas ruta; 
+    private int rutaID; 
 
-    public Programacion(int id, Date date, String hour, Rutas ruta) {
+    public Programacion(int id, Date date, String hour, int rutaID) {
         this.idProgramacion = id;
         this.date = date;
         this.hour = hour;
-        this.ruta = ruta;
+        this.rutaID = rutaID;
     }
 
     public int getId() {
@@ -51,12 +51,12 @@ public class Programacion {
         this.hour = hour;
     }
 
-    public Rutas getRuta() {
-        return ruta;
+    public int getRutaID() {
+        return rutaID;
     }
 
-    public void setRuta(Rutas ruta) {
-        this.ruta = ruta;
-    }     
+    public void setRutaID(int rutaID) {
+        this.rutaID = rutaID;
+    }
     
 }

@@ -70,9 +70,7 @@ public class ProgramacionDAO {
                 
                 BigDecimal price = rs.getBigDecimal("price");
                 
-                Rutas ruta = new Rutas(idRuta,origin,destination,price);
-                
-                Programacion programacion = new Programacion(idProg,date,hour,ruta);
+                Programacion programacion = new Programacion(idProg,date,hour,idRuta);
                 
                 programaciones.add(programacion);
                 

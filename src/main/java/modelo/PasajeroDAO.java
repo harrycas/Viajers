@@ -16,6 +16,7 @@ import java.sql.SQLException;
 public class PasajeroDAO {
     
     Connection conex;
+    
     Conexion con = new Conexion();
     
     public boolean registrarPasajero(Pasajero pasajero) {
@@ -36,7 +37,7 @@ public class PasajeroDAO {
             ps.setString(5, pasajero.getCellphone());
             ps.setString(6, pasajero.getSex());
             ps.setString(7, pasajero.getMail());
-            ps.setInt(8, pasajero.getDoc().getIdDocumento());
+            ps.setInt(8, pasajero.getDocID());
                       
             int filasAfectadas = ps.executeUpdate();
             return filasAfectadas > 0;

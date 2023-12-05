@@ -13,9 +13,9 @@ import java.sql.Date;
 public class Pasajero {
     
     String idPasajero, name, lastName, birthday, cellphone, sex, mail;
-    Documento doc;
+    int docID;
 
-    public Pasajero(String idPasajero, String name, String lastName, String birthday, String cellphone, String sex, String mail, Documento doc) {
+    public Pasajero(String idPasajero, String name, String lastName, String birthday, String cellphone, String sex, String mail, int docID) {
         this.idPasajero = idPasajero;
         this.name = name;
         this.lastName = lastName;
@@ -23,7 +23,7 @@ public class Pasajero {
         this.cellphone = cellphone;
         this.sex = sex;
         this.mail = mail;
-        this.doc = doc;
+        this.docID = docID;
     }
 
     public String getIdPasajero() {
@@ -82,12 +82,12 @@ public class Pasajero {
         this.mail = mail;
     }
 
-    public Documento getDoc() {
-        return doc;
+    public int getDocID() {
+        return docID;
     }
 
-    public void setDoc(Documento doc) {
-        this.doc = doc;
+    public void setDocID(int docID) {
+        this.docID = docID;
     }
-    
+
 }

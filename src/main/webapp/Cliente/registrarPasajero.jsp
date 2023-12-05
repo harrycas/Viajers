@@ -7,17 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
-<!DOCTYPE html>
-
-<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Viajers</title>
@@ -62,7 +51,7 @@
                             Asiento: 12</div>
                     </div>
 
-                    <form action="/Cliente/PasajController" method="POST" id="formularioRegistro">
+                    <form action="/Software/PasajeroController" method="POST" id="formularioRegistro">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
