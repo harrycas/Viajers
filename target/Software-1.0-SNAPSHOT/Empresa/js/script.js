@@ -1,4 +1,5 @@
 function checkLogin() {
+    
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     var passwordError = document.getElementById("password-error");
@@ -18,7 +19,9 @@ function checkLogin() {
     if (validacionExitosa) {
         return true; // Permitir que el formulario se envíe
     } else {
+        alert("Credenciales incorrectas. Intenta de nuevo.");
         return false; // Evitar que el formulario se envíe
     }
+    
 }
   

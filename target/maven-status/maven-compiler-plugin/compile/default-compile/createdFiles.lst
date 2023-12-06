@@ -5,6 +5,7 @@ modelo/TipoAsiento.class
 config/Conexion.class
 modelo/PasajeroDAO.class
 modelo/Programacion.class
+controlador/AsientoController.class
 modelo/Documento.class
 modelo/Reserva.class
 modelo/Administrador.class

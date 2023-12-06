@@ -50,7 +50,7 @@ public class AdministradorController extends HttpServlet {
         } else {
             
             // Login fallido, mostrar mensaje de error o redireccionar a la página de inicio de sesión
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("index.jsp");
             
         }
             

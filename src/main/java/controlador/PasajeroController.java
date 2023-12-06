@@ -74,6 +74,9 @@ public class PasajeroController extends HttpServlet {
         boolean registroExitoso = pasajeroDAO.registrarPasajero(pasajero);
         
         System.out.println("Registro exitoso: " + registroExitoso);
+        
+        // Redirigir a la página realizarReserva.jsp
+        response.sendRedirect("/Software/Cliente/realizarReserva.jsp");
 
     }
 
